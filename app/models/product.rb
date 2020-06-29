@@ -2,7 +2,7 @@ class Product < ApplicationRecord
   validates :name, presence: { message: "Product name required." }
   validates :price, numericality: { greater_than: 0, message: "Invalid price." }
 
-  def desactivate
+  def deactivate
     self.deleted_at = DateTime.now
     save
   end

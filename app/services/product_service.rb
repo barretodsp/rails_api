@@ -29,7 +29,7 @@ class ProductService < ApplicationService
     transacional(success_resp) do
       product = get_valid(id)
       if product
-        raise Exception.new(product.errors.values.join(", ")) unless product.desactivate()
+        raise Exception.new(product.errors.values.join(", ")) unless product.deactivate()
       else
         raise Exception.new("Product invalid.")
       end

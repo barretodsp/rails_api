@@ -29,7 +29,7 @@ class StoreService < ApplicationService
     transacional(success_resp) do
       store = get_valid(id)
       if store
-        raise Exception.new(store.errors.values.join(", ")) unless store.desactivate()
+        raise Exception.new(store.errors.values.join(", ")) unless store.deactivate()
       else
         raise Exception.new("Store invalid.")
       end
