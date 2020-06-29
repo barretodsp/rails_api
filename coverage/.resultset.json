@@ -1,0 +1,67 @@
+{
+  "RSpec": {
+    "coverage": {
+      "/home/patrickbarreto/workspace/loja_api/app/channels/application_cable/channel.rb": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "/home/patrickbarreto/workspace/loja_api/app/channels/application_cable/connection.rb": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "/home/patrickbarreto/workspace/loja_api/app/jobs/application_job.rb": [
+        0,
+        0
+      ],
+      "/home/patrickbarreto/workspace/loja_api/app/controllers/application_controller.rb": [
+        0,
+        0
+      ],
+      "/home/patrickbarreto/workspace/loja_api/app/controllers/product_controller.rb": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "/home/patrickbarreto/workspace/loja_api/app/models/store.rb": [
+        0,
+        0
+      ],
+      "/home/patrickbarreto/workspace/loja_api/app/models/application_record.rb": [
+        0,
+        0,
+        0
+      ],
+      "/home/patrickbarreto/workspace/loja_api/app/models/product.rb": [
+        0,
+        0
+      ],
+      "/home/patrickbarreto/workspace/loja_api/app/models/stock_item.rb": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "/home/patrickbarreto/workspace/loja_api/app/mailers/application_mailer.rb": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "timestamp": 1593376483
+  }
+}
