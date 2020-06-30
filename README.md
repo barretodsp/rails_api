@@ -30,7 +30,7 @@ $ rails s
 
 
 | HTTP verbs  | Paths | JSON content | Used for
-| ------------- | ------------- |
+| ------------- | ------------- | ------------- | ------------- |
 | POST  | /product/add  | { "name": string, "price": float } | Create a product |
 | POST  | /product/get_by_id  | { "id": integer } | get a single product |
 
