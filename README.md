@@ -22,11 +22,11 @@ CREATE DATABASE store_prod WITH ENCODING 'UTF8';
 Copy and past the following script into terminal (ubuntu) to setup and run api.
 
 
-` ` ` 
+``` 
 $ bundle install
 $ rails db:migrate
 $ rails s  
-` ` ` 
+``` 
 
 
 | First Header  | Second Header |
