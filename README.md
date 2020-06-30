@@ -6,7 +6,8 @@
 
 **Subsection 2**
 
-
+Para clonar repositorio
+> git clone
 
 ###
 Things you may want to cover:
