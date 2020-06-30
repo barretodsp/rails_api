@@ -6,7 +6,8 @@ This short step-by-step shows how you can run this api locally.
 Requirements: Ruby 2.5.1 | Ruby on Rails 5.2 | Rspec 3.9 | PostgreSQL 12.1
 
 **Database**
-PSQL script to create role and databases for development, test and production envs.
+
+Copy and past the following script into psql console to create role and databases for development, test and production envs.
 
 ```
 CREATE ROLE storeapi WITH LOGIN PASSWORD 'sttk7878';
