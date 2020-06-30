@@ -8,9 +8,9 @@
 
 Para clonar repositorio
 > git clone
-
+```
 npm install husky
-
+```
 ###
 Things you may want to cover:
 
