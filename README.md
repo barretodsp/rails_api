@@ -3,17 +3,21 @@
 ## Section
 This short step-by-step shows how you can run this api locally.
 
-Environment: Ubuntu 18.04 | Ruby 2.5.1 | Ruby on Rails 5.2 | Rspec 3.9
+Requirements: Ruby 2.5.1 | Ruby on Rails 5.2 | Rspec 3.9 | PostgreSQL 12.1
 
-**Subsection 1**
+**Database**
+PSQL script to create role and databases for development, test and production envs.
 
-**Subsection 2**
-
-Para clonar repositorio
-> git clone
 ```
-npm install husky
+CREATE ROLE storeapi WITH LOGIN PASSWORD 'sttk7878';
+ALTER ROLE storeapi CREATEDB;
+CREATE DATABASE store_development WITH ENCODING 'UTF8';
+CREATE DATABASE store_test WITH ENCODING 'UTF8';
+CREATE DATABASE store_prod WITH ENCODING 'UTF8';
 ```
+
+**Setup & Run API**
+
 
 | First Header  | Second Header |
 | ------------- | ------------- |
