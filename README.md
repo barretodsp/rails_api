@@ -32,7 +32,13 @@ $ rails s
 | HTTP verbs  | Paths | JSON content | Used for
 | ------------- | ------------- | ------------- | ------------- |
 | POST  | /product/add  | { "name": string, "price": float } | Create a product |
-| POST  | /product/get_by_id  | { "id": integer } | get a single product |
+| POST  | /product/get_by_id  | { "id": integer } | Get a single product |
+| POST  | /product/update  | { "id": integer, "name": string, "price": float } | Update a product |
+| POST  | /product/delete  | { "id": integer } | Delete a product |
+| POST  | /store/add  | { "name": string, "address": string } | Create a store |
+| POST  | /store/get_by_id  | { "id": integer } | Get a single store |
+| POST  | /store/update  | { "id": integer, "name": string, "address": string } | Update a store |
+| POST  | /store/delete  | { "id": integer } | Delete a store |
 
 
 ###
