@@ -24,8 +24,8 @@ ActiveRecord::Schema.define(version: 2020_06_29_191420) do
   end
 
   create_table "stock_items", force: :cascade do |t|
-    t.bigint "product_id"
-    t.bigint "store_id"
+    t.bigint "product_id", null: false
+    t.bigint "store_id", null: false
     t.integer "qty", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
