@@ -36,6 +36,7 @@ group :development, :test do
   gem "factory_bot_rails"
   gem "rspec-rails"
   gem "rspec-retry"
+  gem "rails-controller-testing"
   gem "pry"
   gem "rubocop", require: false
   gem "rubocop-rspec"

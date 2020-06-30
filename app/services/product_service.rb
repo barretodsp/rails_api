@@ -1,6 +1,6 @@
 class ProductService < ApplicationService
   def self.create(product)
-    success_resp = { notice: "Product created!", status: :ok }
+    success_resp = { notice: "Product created!" }
     transacional(success_resp) do
       raise Exception.new(product.errors.values.join(", ")) unless product.save
     end
@@ -13,7 +13,7 @@ class ProductService < ApplicationService
   end
 
   def self.update(id, params)
-    success_resp = { notice: "Product updated!", status: :ok }
+    success_resp = { notice: "Product updated!" }
     transacional(success_resp) do
       product = get_valid(id)
       if product
@@ -25,7 +25,7 @@ class ProductService < ApplicationService
   end
 
   def self.delete(id)
-    success_resp = { notice: "Product deleted!", status: :ok }
+    success_resp = { notice: "Product deleted!" }
     transacional(success_resp) do
       product = get_valid(id)
       if product
@@ -39,7 +39,7 @@ class ProductService < ApplicationService
   private
 
   def self.get_valid(id)
-    return nil if !(id && id.is_a?(Integer))
+    return nil unless id
     Product.find_by_id(id)
   end
 end

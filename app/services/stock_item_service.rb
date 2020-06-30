@@ -1,6 +1,6 @@
 class StockItemService < ApplicationService
   def self.create(stock_item)
-    success_resp = { notice: "Stock Item created!", status: :ok }
+    success_resp = { notice: "Stock Item created!" }
     transacional(success_resp) do
       raise Exception.new(stock_item.errors.values.join(", ")) unless stock_item.save
     end
@@ -13,12 +13,12 @@ class StockItemService < ApplicationService
   end
 
   def self.add_qty(id, params)
-    success_resp = { notice: "Stock Item updated!", status: :ok }
+    success_resp = { notice: "Stock Item updated!" }
     transacional(success_resp) do
       stock_item = get_valid(id)
       if stock_item && valid_qty?(params[:qty])
         stock_item.lock!
-        stock_item.qty = stock_item.qty + params[:qty]
+        stock_item.qty = stock_item.qty + params[:qty].to_i
         raise Exception.new(stock_item.errors.values.join(", ")) unless stock_item.save
       else
         raise Exception.new("Stock Item or qty invalid.")
@@ -27,12 +27,12 @@ class StockItemService < ApplicationService
   end
 
   def self.delete_qty(id, params)
-    success_resp = { notice: "Stock Item updated!", status: :ok }
+    success_resp = { notice: "Stock Item updated!" }
     transacional(success_resp) do
       stock_item = get_valid(id)
       if stock_item && valid_qty?(params[:qty])
         stock_item.lock!
-        stock_item.qty = stock_item.qty - params[:qty]
+        stock_item.qty = stock_item.qty - params[:qty].to_i
         raise Exception.new(stock_item.errors.values.join(", ")) unless stock_item.save
       else
         raise Exception.new("Stock Item or qty invalid.")
@@ -41,13 +41,13 @@ class StockItemService < ApplicationService
   end
 
   def self.delete(id)
-    success_resp = { notice: "Stock Item deleted!", status: :ok }
+    success_resp = { notice: "Stock Item deleted!" }
     transacional(success_resp) do
       stock_item = get_valid(id)
       if stock_item
         raise Exception.new(stock_item.errors.values.join(", ")) unless stock_item.deactivate()
       else
-        raise Exception.new("Invalid.")
+        raise Exception.new("Stock Item invalid.")
       end
     end
   end
@@ -55,11 +55,13 @@ class StockItemService < ApplicationService
   private
 
   def self.get_valid(id)
-    return nil if !(id && id.is_a?(Integer))
+    return nil unless id
     StockItem.find_by_id(id)
   end
 
   def self.valid_qty?(qty)
-    (qty && qty.is_a?(Integer))
+    qty && qty.to_i > 0
+  rescue StandardError
+    nil
   end
 end
