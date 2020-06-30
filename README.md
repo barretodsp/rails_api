@@ -23,8 +23,8 @@ Copy and past the following script into terminal (ubuntu) to setup and run api.
 
 
 ` ` ` 
-$ bundle install  
-$ rails db:migrate  
+$ bundle install<br/>
+$ rails db:migrate<br/>
 $ rails s  
 ` ` ` 
 
