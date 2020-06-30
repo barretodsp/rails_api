@@ -29,10 +29,10 @@ $ rails s
 ``` 
 
 
-| First Header  | Second Header |
+| HTTP verbs  | Paths | JSON content | Used for
 | ------------- | ------------- |
-| Content Cell  | Content Cell  |
-| Content Cell  | Content Cell  |
+| POST  | /product/add  | { "name": string, "price": float } | Create a product |
+| POST  | /product/get_by_id  | { "id": integer } | get a single product |
 
 
 ###
