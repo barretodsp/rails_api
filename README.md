@@ -1,6 +1,8 @@
 # Rails
 
 ## Section
+This short step-by-step shows how you can run this api locally. 
+Environment: Ubuntu 18.04 | Ruby 2.5.1 | Ruby on Rails 5.2 | Rspec 3.9
 
 **Subsection 1**
 
