@@ -30,11 +30,9 @@ $ rails s
 
 ****
 
-## Usage
+## Endpoints
 
-This section shows how you can call the paths.
 
-**Endpoints**
 
 | HTTP verbs  | Paths | JSON content | Used for
 | ------------- | ------------- | ------------- | ------------- |
@@ -53,10 +51,24 @@ This section shows how you can call the paths.
 | POST  | /stock_item/delete  | { "id": integer } | Delete a stock item |
 
 
-**Examples**
+## Usage Examples
+
+**Create a Product**
 
 ```
 curl -X POST -H 'Content-type: application/json' -d '{"price": 2.99, "name": "Product AAA"}' localhost:3000/product/add
+```
+
+**Get a Product**
+
+```
+curl -X POST -H 'Content-type: application/json' -d '{"id": 1}' localhost:3000/product/get_by_id
+```
+
+**Increase Quantity of StockItem**
+
+```
+curl -X POST -H 'Content-type: application/json' -d '{"id": 1, "qty": 5}' localhost:3000/stock_item/add_qty
 ```
 
 ###
