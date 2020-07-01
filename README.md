@@ -56,7 +56,7 @@ This section shows how you can call the paths.
 **Examples**
 
 ```
-curl -X POST -H 'Content-type: application/json' -d '{"price": 2.99, "name": "curl"}' localhost:3000/product/add
+curl -X POST -H 'Content-type: application/json' -d '{"price": 2.99, "name": "Product AAA"}' localhost:3000/product/add
 ```
 
 ###
