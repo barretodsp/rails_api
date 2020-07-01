@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe Product, type: :model do
+RSpec.describe Product, type: :model do
   describe "validations" do
     it { is_expected.to validate_presence_of(:name).with_message("Product name required.") }
     it { is_expected.to validate_numericality_of(:price).is_greater_than(0).with_message("Invalid price.") }
