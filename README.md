@@ -44,17 +44,18 @@ $ bundle exec rspec
 | POST  | /product/add  | { "name": string, "price": float } | Create a product |
 | POST  | /product/get_by_id  | { "id": integer } | Get a single product |
 | POST  | /product/update  | { "id": integer, "name": string, "price": float } | Update a product |
-| POST  | /product/delete  | { "id": integer } | Delete a product |
+| POST  | /product/delete  | { "id": integer } | Delete (soft delete) a product |
 | POST  | /store/add  | { "name": string, "address": string } | Create a store |
 | POST  | /store/get_by_id  | { "id": integer } | Get a single store |
 | POST  | /store/update  | { "id": integer, "name": string, "address": string } | Update a store |
-| POST  | /store/delete  | { "id": integer } | Delete a store |
+| POST  | /store/delete  | { "id": integer } | Delete (soft delete) a store |
 | POST  | /stock_item/add  | { "product_id": integer, "store_id": integer, "qty": integer } | Create a stock item |
 | POST  | /stock_item/get_by_id  | { "id": integer } | Get a single stock item |
 | POST  | /stock_item/add_qty  | { "id": integer, "qty": integer } | Increment quantity qty units |
 | POST  | /stock_item/delete_qty  | { "id": integer, "qty": integer } | Decrement quantity in qty units |
-| POST  | /stock_item/delete  | { "id": integer } | Delete a stock item |
+| POST  | /stock_item/delete  | { "id": integer } | Delete (soft delete) a stock item |
 
+**All delete operations execute a soft delete (set a timestamp in the deleted_at attribite).**
 
 ## Usage Examples
 
