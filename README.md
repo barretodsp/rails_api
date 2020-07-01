@@ -1,7 +1,7 @@
 # Rails
 
-## Section
-This short step-by-step shows how you can run this api locally.
+## Project Setup
+This step-by-step shows how you can run this api locally.
 
 Requirements: Ruby 2.5.1 | Ruby on Rails 5.2 | Rspec 3.9 | PostgreSQL 12.1
 
@@ -28,6 +28,11 @@ $ rails db:migrate
 $ rails s  
 ``` 
 
+****
+
+## Usage
+
+This section shows how you can call the paths.
 
 | HTTP verbs  | Paths | JSON content | Used for
 | ------------- | ------------- | ------------- | ------------- |
