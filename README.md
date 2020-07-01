@@ -28,11 +28,16 @@ $ rails db:migrate
 $ rails s  
 ``` 
 
-****
+**Run test**
+
+There are 102 test cases. All is green!
+
+``` 
+$ bundle exec rspec 
+``` 
+
 
 ## Endpoints
-
-
 
 | HTTP verbs  | Paths | JSON content | Used for
 | ------------- | ------------- | ------------- | ------------- |
@@ -70,24 +75,3 @@ curl -X POST -H 'Content-type: application/json' -d '{"id": 1}' localhost:3000/p
 ```
 curl -X POST -H 'Content-type: application/json' -d '{"id": 1, "qty": 5}' localhost:3000/stock_item/add_qty
 ```
-
-###
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
