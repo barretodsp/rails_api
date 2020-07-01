@@ -30,7 +30,7 @@ $ rails s
 
 **Run test**
 
-There are 102 test cases. All green!
+There are 103 test cases. All green!
 
 ``` 
 $ bundle exec rspec 
