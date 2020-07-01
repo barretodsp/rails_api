@@ -1,4 +1,4 @@
-# Rails
+# Rails Store API
 
 ## Project Setup
 This step-by-step shows how you can run this api locally.
