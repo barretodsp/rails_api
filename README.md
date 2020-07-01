@@ -55,7 +55,7 @@ $ bundle exec rspec
 | POST  | /stock_item/delete_qty  | { "id": integer, "qty": integer } | Decrement quantity in qty units |
 | POST  | /stock_item/delete  | { "id": integer } | Delete (soft delete) a stock item |
 
-**All delete operations execute a soft delete (set a timestamp in the deleted_at attribite) instead of destroy the registry.**
+**All delete operations execute a soft delete (set a timestamp in the 'deleted_at' attribute) instead of destroy the registry.**
 
 ## Usage Examples
 
