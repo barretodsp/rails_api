@@ -34,6 +34,8 @@ $ rails s
 
 This section shows how you can call the paths.
 
+**Endpoints**
+
 | HTTP verbs  | Paths | JSON content | Used for
 | ------------- | ------------- | ------------- | ------------- |
 | POST  | /product/add  | { "name": string, "price": float } | Create a product |
@@ -49,6 +51,13 @@ This section shows how you can call the paths.
 | POST  | /stock_item/add_qty  | { "id": integer, "qty": integer } | Increment quantity qty units |
 | POST  | /stock_item/delete_qty  | { "id": integer, "qty": integer } | Decrement quantity in qty units |
 | POST  | /stock_item/delete  | { "id": integer } | Delete a stock item |
+
+
+**Examples**
+
+```
+curl -X POST -H 'Content-type: application/json' -d '{"price": 2.99, "name": "curl"}' localhost:3000/product/add
+```
 
 ###
 Things you may want to cover:
