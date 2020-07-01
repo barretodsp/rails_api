@@ -75,3 +75,5 @@ curl -X POST -H 'Content-type: application/json' -d '{"id": 1}' localhost:3000/p
 ```
 curl -X POST -H 'Content-type: application/json' -d '{"id": 1, "qty": 5}' localhost:3000/stock_item/add_qty
 ```
+
+**For Heroku calls, change 'localhost:3000' to 'https://rails-api-loja.herokuapp.com'.**
