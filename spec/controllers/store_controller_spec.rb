@@ -18,6 +18,10 @@ RSpec.describe StoreController, type: :controller do
       it "return success" do
         post :add, params: valid_attributes
         expect(response).to have_http_status(:ok)
+      end
+
+      it "return success message " do
+        post :add, params: valid_attributes
         expect(response.body).to eq(({ "message": "Store created!" }).to_json)
       end
     end
@@ -32,6 +36,10 @@ RSpec.describe StoreController, type: :controller do
       it "return error" do
         post :add, params: invalid_attributes
         expect(response).to have_http_status(:bad_request)
+      end
+
+      it "return error message" do
+        post :add, params: invalid_attributes
         expect(response.body).to eq(({ "error": "Store name required., Store address required." }).to_json)
       end
     end
@@ -52,10 +60,29 @@ RSpec.describe StoreController, type: :controller do
     end
 
     context "With invalid params" do
-      it "return error" do
+      before do
         post :get_by_id, params: { id: "abc" }
+      end
+      it "return error" do
         expect(response).to have_http_status(:bad_request)
+      end
+
+      it "return error message" do
         expect(response.body).to eq(({ "error": "Invalid request." }).to_json)
+      end
+    end
+
+    context "When id not exists" do
+      before do
+        post :get_by_id, params: { id: 0 }
+      end
+
+      it "return not found status" do
+        expect(response).to have_http_status(:not_found)
+      end
+
+      it "return error message" do
+        expect(response.body).to eq(({ "error": "Store not found." }).to_json)
       end
     end
   end
@@ -97,6 +124,20 @@ RSpec.describe StoreController, type: :controller do
         expect(response.body).to eq(({ "error": "Store name required." }).to_json)
       end
     end
+
+    context "When id not exists" do
+      before do
+        post :update, params: { id: 0 }
+      end
+
+      it "return not found status" do
+        expect(response).to have_http_status(:not_found)
+      end
+
+      it "return error message" do
+        expect(response.body).to eq(({ "error": "Store not found." }).to_json)
+      end
+    end
   end
 
   describe "POST #delete" do
@@ -129,7 +170,21 @@ RSpec.describe StoreController, type: :controller do
         expect(response).to have_http_status(:bad_request)
       end
       it "return error message " do
-        expect(response.body).to eq(({ "error": "Store invalid." }).to_json)
+        expect(response.body).to eq(({ "error": "Invalid request." }).to_json)
+      end
+    end
+
+    context "When id not exists" do
+      before do
+        post :delete, params: { id: 0 }
+      end
+
+      it "return not found status" do
+        expect(response).to have_http_status(:not_found)
+      end
+
+      it "return error message" do
+        expect(response.body).to eq(({ "error": "Store not found." }).to_json)
       end
     end
   end

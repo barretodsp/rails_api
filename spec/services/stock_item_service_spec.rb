@@ -27,7 +27,7 @@ RSpec.describe ProductService, type: :model do
 
       it "return invalid" do
         resp = StockItemService.add_qty stock_item, invalid_qty
-        expect(resp).to eq({ alert: "Stock Item or qty invalid." })
+        expect(resp).to eq({ alert: "Stock Item or qty invalid.", status: 400 })
       end
     end
 
@@ -39,12 +39,12 @@ RSpec.describe ProductService, type: :model do
 
       it "return invalid" do
         resp = StockItemService.delete_qty stock_item, invalid_qty
-        expect(resp).to eq({ alert: "Stock Item or qty invalid." })
+        expect(resp).to eq({ alert: "Stock Item or qty invalid.", status: 400 })
       end
 
       it "return invalid by id" do
         resp = StockItemService.delete_qty stock_item.id, { qty: "abc" }
-        expect(resp).to eq({ alert: "Stock Item or qty invalid." })
+        expect(resp).to eq({ alert: "Stock Item or qty invalid.", status: 400 })
       end
     end
 
@@ -56,7 +56,7 @@ RSpec.describe ProductService, type: :model do
 
       it "return invalid" do
         resp = StockItemService.delete "abc"
-        expect(resp).to eq({ alert: "Stock Item invalid." })
+        expect(resp).to eq({ alert: "Invalid request.", status: 400 })
       end
     end
   end

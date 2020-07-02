@@ -16,9 +16,13 @@ RSpec.describe ProductController, type: :controller do
         end.to change(Product, :count).by(1)
       end
 
-      it "return success" do
+      it "return success status" do
         post :add, params: valid_attributes
         expect(response).to have_http_status(:ok)
+      end
+
+      it "return success message " do
+        post :add, params: valid_attributes
         expect(response.body).to eq(({ "message": "Product created!" }).to_json)
       end
     end
@@ -30,9 +34,13 @@ RSpec.describe ProductController, type: :controller do
         end.to change(Product, :count).by(0)
       end
 
-      it "return error" do
+      it "return error status" do
         post :add, params: invalid_attributes
         expect(response).to have_http_status(:bad_request)
+      end
+
+      it "return error message" do
+        post :add, params: invalid_attributes
         expect(response.body).to eq(({ "error": "Product name required., Invalid price." }).to_json)
       end
     end
@@ -53,10 +61,30 @@ RSpec.describe ProductController, type: :controller do
     end
 
     context "With invalid params" do
-      it "return error" do
+      before do
         post :get_by_id, params: { id: "abc" }
+      end
+
+      it "return bad request status" do
         expect(response).to have_http_status(:bad_request)
+      end
+
+      it "return error message" do
         expect(response.body).to eq(({ "error": "Invalid request." }).to_json)
+      end
+    end
+
+    context "When id not exists" do
+      before do
+        post :get_by_id, params: { id: 0 }
+      end
+
+      it "return not found status" do
+        expect(response).to have_http_status(:not_found)
+      end
+
+      it "return error message" do
+        expect(response.body).to eq(({ "error": "Product not found." }).to_json)
       end
     end
   end
@@ -98,6 +126,20 @@ RSpec.describe ProductController, type: :controller do
         expect(response.body).to eq(({ "error": "Invalid price." }).to_json)
       end
     end
+
+    context "When id not exists" do
+      before do
+        post :update, params: { id: 0 }
+      end
+
+      it "return not found status" do
+        expect(response).to have_http_status(:not_found)
+      end
+
+      it "return error message" do
+        expect(response.body).to eq(({ "error": "Product not found." }).to_json)
+      end
+    end
   end
 
   describe "POST #delete" do
@@ -130,7 +172,21 @@ RSpec.describe ProductController, type: :controller do
         expect(response).to have_http_status(:bad_request)
       end
       it "return error message " do
-        expect(response.body).to eq(({ "error": "Product invalid." }).to_json)
+        expect(response.body).to eq(({ "error": "Invalid request." }).to_json)
+      end
+    end
+
+    context "When id not exists" do
+      before do
+        post :delete, params: { id: 0 }
+      end
+
+      it "return not found status" do
+        expect(response).to have_http_status(:not_found)
+      end
+
+      it "return error message" do
+        expect(response.body).to eq(({ "error": "Product not found." }).to_json)
       end
     end
   end

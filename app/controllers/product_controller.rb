@@ -35,7 +35,7 @@ class ProductController < ApplicationController
     if (resp[:notice])
       render json: { message: resp[:notice] }, status: :ok
     else
-      render json: { error: resp[:alert] }, status: :bad_request
+      render json: { error: resp[:alert] }, status: resp[:status] || 500
     end
   end
 
@@ -43,7 +43,7 @@ class ProductController < ApplicationController
     if (resp[:notice])
       render json: { data: resp[:notice] }, status: :ok
     else
-      render json: { error: resp[:alert] }, status: :bad_request
+      render json: { error: resp[:alert] }, status: resp[:status] || 500
     end
   end
 end

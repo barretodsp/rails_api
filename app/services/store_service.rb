@@ -2,44 +2,35 @@ class StoreService < ApplicationService
   def self.create(store)
     success_resp = { notice: "Store created!" }
     transacional(success_resp) do
-      raise Exception.new(store.errors.values.join(", ")) unless store.save
+      raise ActiveRecord::RecordInvalid.new(store) unless store.save
     end
   end
 
   def self.get_by_id(id)
-    store = get_valid(id)
-    return { alert: "Invalid request." } unless store
+    return { alert: "Invalid request.", status: 400 } unless valid_id?(id)
+    store = Store.find_by_id(id)
+    return { alert: "Store not found.", status: 404 } unless store
     { notice: store }
   end
 
   def self.update(id, params)
     success_resp = { notice: "Store updated!" }
     transacional(success_resp) do
-      store = get_valid(id)
-      if store
-        raise Exception.new(store.errors.values.join(", ")) unless store.update_attributes(params)
-      else
-        raise Exception.new("Store invalid.")
-      end
+      return { alert: "Invalid request.", status: 400 } unless valid_id?(id)
+      store = Store.find_by_id(id)
+      return { alert: "Store not found.", status: 404 } unless store
+      raise ActiveRecord::RecordInvalid.new(store) unless store.update_attributes(params)
+      store.update_attributes(params)
     end
   end
 
   def self.delete(id)
     success_resp = { notice: "Store deleted!" }
     transacional(success_resp) do
-      store = get_valid(id)
-      if store
-        raise Exception.new(store.errors.values.join(", ")) unless store.deactivate()
-      else
-        raise Exception.new("Store invalid.")
-      end
+      return { alert: "Invalid request.", status: 400 } unless valid_id?(id)
+      store = Store.find_by_id(id)
+      return { alert: "Store not found.", status: 404 } unless store
+      raise ActiveRecord::RecordInvalid.new(store) unless store.deactivate()
     end
-  end
-
-  private
-
-  def self.get_valid(id)
-    return nil unless id
-    Store.find_by_id(id)
   end
 end

@@ -27,7 +27,7 @@ RSpec.describe StoreService, type: :model do
 
       it "return invalid" do
         resp = StoreService.update "abc", update_params
-        expect(resp).to eq({ alert: "Store invalid." })
+        expect(resp).to eq({ alert: "Invalid request.", status: 400 })
       end
     end
 
@@ -39,7 +39,7 @@ RSpec.describe StoreService, type: :model do
 
       it "return invalid" do
         resp = StoreService.delete "abc"
-        expect(resp).to eq({ alert: "Store invalid." })
+        expect(resp).to eq({ alert: "Invalid request.", status: 400 })
       end
     end
   end

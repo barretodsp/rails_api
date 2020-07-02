@@ -14,7 +14,6 @@ RSpec.describe ProductService, type: :model do
     describe "#get_by_id" do
       it "return object" do
         resp = ProductService.get_by_id product.id
-        # expect(resp).to include :notice
         expect(resp).to eq({ notice: product })
       end
     end
@@ -27,7 +26,7 @@ RSpec.describe ProductService, type: :model do
 
       it "return invalid" do
         resp = ProductService.update "abc", update_params
-        expect(resp).to eq({ alert: "Product invalid." })
+        expect(resp).to eq({ alert: "Invalid request.", status: 400 })
       end
     end
 
@@ -39,7 +38,7 @@ RSpec.describe ProductService, type: :model do
 
       it "return invalid" do
         resp = ProductService.delete "abc"
-        expect(resp).to eq({ alert: "Product invalid." })
+        expect(resp).to eq({ alert: "Invalid request.", status: 400 })
       end
     end
   end
