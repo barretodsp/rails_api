@@ -20,7 +20,6 @@ class ProductService < ApplicationService
       product = Product.find_by_id(id)
       return { alert: "Product not found.", status: 404 } unless product
       raise ActiveRecord::RecordInvalid.new(product) unless product.update_attributes(params)
-      product.update_attributes(params)
     end
   end
 

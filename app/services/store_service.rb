@@ -20,7 +20,6 @@ class StoreService < ApplicationService
       store = Store.find_by_id(id)
       return { alert: "Store not found.", status: 404 } unless store
       raise ActiveRecord::RecordInvalid.new(store) unless store.update_attributes(params)
-      store.update_attributes(params)
     end
   end
 
