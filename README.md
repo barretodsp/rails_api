@@ -62,7 +62,7 @@ $ bundle exec rspec
 **Create a Product**
 
 ```
-curl -X POST -H 'Content-type: application/json' -d '{"price": 2.99, "name": "Product AAA"}' localhost:3000/product/add
+curl -X POST -H 'Content-type: application/json' -d '{"first_name": "Ana", "last_name": "Silva", "birth_dt": "2020-05-30", "blood_type": "AB+", "cpf": "11122233344", "contacts": ["(21)2222-3333", "(21)98888-9999"] }' localhost:4000/api/v1/patient/create
 ```
 
 **Get a Product**
